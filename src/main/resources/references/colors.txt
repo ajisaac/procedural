@@ -1,0 +1,13 @@
+112, 128, 144 slate gray
+230, 230, 250 lavender
+255,  69, 0   orangered
+128, 128, 0   olive
+255, 235, 205 blanched almond
+218, 165, 32  goldenrod
+160, 82,  45  sienna
+0,   100, 0   dark green
+107, 142, 35  olive drab
+
+85,  107, 47  dark olive green
+173, 255, 47  green yellow
+0,   255, 127 spring green
