@@ -17,6 +17,4 @@ add_executable(proc_gen main.cpp)
 target_link_libraries(proc_gen
         Qt::Core
         Qt::Gui
-        Qt::Widgets
-        )
-
+        Qt::Widgets)
