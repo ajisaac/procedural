@@ -1,3 +1,3 @@
-# procedural
+# procedural generation code
 
-Using vulkan and QT to rewrite the original program.
+Code for procedural generation using noise from a long time ago.
