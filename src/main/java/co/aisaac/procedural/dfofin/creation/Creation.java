@@ -37,7 +37,7 @@ public class Creation {
 				byte getheatdata = getHeatData(((i * S.chunkSize) + k), (j * S.chunkSize) + l);
 				byte getpercipdata = getPercipData(((i * S.chunkSize) + k), (j * S.chunkSize) + l);
 				byte createriverdata = createRiverData((i * S.chunkSize) + k, (j * S.chunkSize) + l, getmountaindata,
-													   getpercipdata);
+						getpercipdata);
 				byte createbiomedata = createBiomeData(getheatdata, getpercipdata);
 				ch.setIsLand(k, l, island);
 				ch.setIsMountain(k, l, ismountain);
@@ -53,7 +53,7 @@ public class Creation {
 				} else if (createbiomedata == S.coldDesert || createbiomedata == S.hotDesert) {//desert
 					ch.setTileType(k, l, S.tileDesert);
 				} else if (createbiomedata == S.borealForest || createbiomedata == S.rainForest ||
-						   createbiomedata == S.tempDeciduous || createbiomedata == S.tropicalDryForest) {//trees
+						createbiomedata == S.tempDeciduous || createbiomedata == S.tropicalDryForest) {//trees
 					ch.setTileType(k, l, S.tileTree);
 				} else
 					ch.setTileType(k, l, S.tileGrass);
@@ -69,6 +69,7 @@ public class Creation {
 		else
 			return 0;
 	}
+
 	private double sumOctaveLandData(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -101,6 +102,7 @@ public class Creation {
 			return 0;
 
 	}
+
 	private double getMountainData(int i, int j) {
 		double num = 0;
 		num = sumOctaveMounData(i, j, 8, .53, mountainScale) + .5;
@@ -112,6 +114,7 @@ public class Creation {
 
 		return num;
 	}
+
 	private double sumOctaveMounData(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -140,13 +143,16 @@ public class Creation {
 			hm = 1 - hm;
 		return (byte) (Math.round(normalizeFloatToFloat((float) hm, 0, .5f, 0, 1) * 100));
 	}
+
 	public static float normalizeFloatToFloat(float j, float sourceMin, float sourceMax, float destMin,
 											  float destMax) {
 		return (destMax - destMin) / (sourceMax - sourceMin) * (j - sourceMax) + destMax;
 	}
+
 	public static float normalizeIntToFloat(int num, int sourceMin, int sourceMax) {
 		return (float) ((1 / ((double) sourceMax - (double) sourceMin)) * (double) num);
 	}
+
 	private double sumOctaveHeatData(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -195,6 +201,7 @@ public class Creation {
 		}
 		return bnum;
 	}
+
 	private double sumOctavePercipData(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -231,11 +238,12 @@ public class Creation {
 		byte river = 0;
 		percip = -(percip) + 1;
 		if (riverNum > .92 + (.03 * percip) + (.05 * elevation) ||
-			(riverNum > .73 + (.27 * percip) && riverSmallNum > .93 + (.06 * percip))) {
+				(riverNum > .73 + (.27 * percip) && riverSmallNum > .93 + (.06 * percip))) {
 			river = 1;
 		}
 		return river;
 	}
+
 	private double sumOctaveRiverData(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -252,6 +260,7 @@ public class Creation {
 		return fnt;
 
 	}
+
 	private double sumOctaveRiverData2(double i, double j, int iter, double pers, double scale) {
 
 		double fnt = 0;
@@ -268,41 +277,42 @@ public class Creation {
 		return fnt;
 
 	}
+
 	private byte createBiomeData(byte heat, byte precip) {
 		//default settings
 
 		if ((heat >= S.tundraHeatLow && heat < S.tundraHeatHigh) &&
-			(precip >= S.tundraPercipLow && precip < S.tundraPercipHigh)) {
+				(precip >= S.tundraPercipLow && precip < S.tundraPercipHigh)) {
 			return S.tundra;
 		} else if ((heat >= S.coldDesertHeatLow && heat < S.coldDesertHeatHigh) &&
-				   (precip >= S.coldDesertPercipLow && precip < S.coldDesertPercipHigh)) {
+				(precip >= S.coldDesertPercipLow && precip < S.coldDesertPercipHigh)) {
 			return S.coldDesert;
 		} else if ((heat >= S.hotDesertHeatLow && heat <= S.hotDesertHeatHigh) &&
-				   (precip >= S.hotDesertPercipLow && precip < S.hotDesertPercipHigh)) {
+				(precip >= S.hotDesertPercipLow && precip < S.hotDesertPercipHigh)) {
 			return S.hotDesert;
 		} else if ((heat >= S.shrublandHeatLow && heat < S.shrublandHeatHigh) &&
-				   (precip >= S.shrublandPercipLow && precip < S.shrublandPercipHigh)) {
+				(precip >= S.shrublandPercipLow && precip < S.shrublandPercipHigh)) {
 			return S.shrubLand;
 		} else if ((heat >= S.grassLandHeatLow && heat < S.grassLandHeatHigh) &&
-				   (precip >= S.grassLandPercipLow && precip < S.grassLandPercipHigh)) {
+				(precip >= S.grassLandPercipLow && precip < S.grassLandPercipHigh)) {
 			return S.grassland;
 		} else if ((heat >= S.savannaHeatLow && heat <= S.savannaHeatHigh) &&
-				   (precip >= S.savannaPercipLow && precip < S.savannaPercipHigh)) {
+				(precip >= S.savannaPercipLow && precip < S.savannaPercipHigh)) {
 			return S.savanna;
 		} else if ((heat >= S.borealForestHeatLow && heat < S.borealForestHeatHigh) &&
-				   (precip >= S.borealForestPercipLow && precip < S.borealForestPercipHigh)) {
+				(precip >= S.borealForestPercipLow && precip < S.borealForestPercipHigh)) {
 			return S.borealForest;
 		} else if ((heat >= S.tempDeciduousForestHeatLow && heat < S.tempDeciduousForestHeatHigh) &&
-				   (precip >= S.tempDeciduousForestPercipLow && precip < S.tempDeciduousForestPercipHigh)) {
+				(precip >= S.tempDeciduousForestPercipLow && precip < S.tempDeciduousForestPercipHigh)) {
 			return S.tempDeciduous;
 		} else if ((heat >= S.tropicalMontaneHeatLow && heat < S.tropicalMontaneHeatHigh) &&
-				   (precip >= S.tropicalMontanePercipLow && precip < S.tropicalMontanePercipHigh)) {
+				(precip >= S.tropicalMontanePercipLow && precip < S.tropicalMontanePercipHigh)) {
 			return S.tropicalMontane;
 		} else if ((heat >= S.tropicalDryForestHeatLow && heat <= S.tropicalDryForestHeatHigh) &&
-				   (precip >= S.tropicalDryForestPercipLow && precip < S.tropicalDryForestPercipHigh)) {
+				(precip >= S.tropicalDryForestPercipLow && precip < S.tropicalDryForestPercipHigh)) {
 			return S.tropicalDryForest;
 		} else if ((heat >= S.rainForestHeatLow && heat <= S.rainForestHeatHigh) &&
-				   (precip >= S.rainForestPercipLow && precip < S.rainForestPercipHigh)) {
+				(precip >= S.rainForestPercipLow && precip < S.rainForestPercipHigh)) {
 			return S.rainForest;
 		} else
 			return S.iceCap;

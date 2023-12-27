@@ -29,15 +29,15 @@ public class BSPNode {
 	}
 
 	public BSPNode(
-		int x1,
-		int y1,
-		int x2,
-		int y2,
-		ArrayList nodes,
-		int minNodeSize,
-		int level,
-		int offset,
-		Random rand) {
+			int x1,
+			int y1,
+			int x2,
+			int y2,
+			ArrayList nodes,
+			int minNodeSize,
+			int level,
+			int offset,
+			Random rand) {
 
 		this.rand = rand;
 		this.level = level += 1;
@@ -137,9 +137,9 @@ public class BSPNode {
 		int verticalOffset = node.nodeHeight - node.vertOffset;
 		int horizontalOffset = node.nodeWidth - node.horiOffset;
 		int y1Offset = rand.nextInt(verticalOffset),
-			y2Offset = rand.nextInt(verticalOffset - y1Offset),
-			x1Offset = rand.nextInt(horizontalOffset),
-			x2Offset = rand.nextInt(horizontalOffset - x1Offset);
+				y2Offset = rand.nextInt(verticalOffset - y1Offset),
+				x1Offset = rand.nextInt(horizontalOffset),
+				x2Offset = rand.nextInt(horizontalOffset - x1Offset);
 
 		Rect r = new Rect();
 		r.y1 = node.y1 + y1Offset;
